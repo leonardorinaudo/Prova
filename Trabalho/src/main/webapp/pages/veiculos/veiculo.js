@@ -21,9 +21,31 @@ function VeiculoController($scope,$http) {
 
     
     function funcaoExcluir(vitima) {
+        $http.delete("/veiculos/"+vitima.id).success(onSuccess).error(onError);
+        
+        function onSucess(data,status){
+            console.log(data);
+        funcaoCarregar();
+        }
+        function onError(data,status){
+            alert("Erro:"+data);
+        }
     }
     
     function funcaoSalvar() {
+        if($scope.isNovo){
+            http.post("/veiculos/",$scope.veiculo).sucess(onSucess).error(onError);
+        }else{
+            http.put("/veiculos/",$scope.veiculo).sucess(onSucess).error(onError);
+        }
+        function onSucess(data,status){
+            console.log(data);
+        funcaoCarregar();
+            $scope.veiculo = {};
+            $scope.isNovo = true;
+        function onError(data,status){
+            alert("Erro:"+data);
+        }        
     }
     
     function funcaoCarregar() {
@@ -39,6 +61,9 @@ function VeiculoController($scope,$http) {
     }
     
     function funcaoIniciar() {
+        console.log("->InIcIaNdO ...","mais umas","outra","mais outra");
+        console.log("Loading Veiculos...");
+    }
         funcaoCarregar();
         console.log(">>> veículos carregados....");
     }
