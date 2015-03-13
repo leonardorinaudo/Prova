@@ -2,7 +2,6 @@ module = angular.module("Prova", []);
 
 module.controller("DisciplinaController", ["$scope","$http", DisciplinaController]);
 
-
 function DisciplinaController($scope,$http) {
     
     $scope.iniciar = funcaoIniciar;
@@ -29,7 +28,7 @@ function DisciplinaController($scope,$http) {
     funcaoCarregar();
         
     function onError(data,status){
-        aler("erro"+data);
+        alert("erro"+data);
         }
     }
     
@@ -47,7 +46,7 @@ function DisciplinaController($scope,$http) {
         $scope.isNovo = true;
         
     function onError(data,status){
-        aler("erro"+data);
+        alert("erro"+data);
         }
          
     
